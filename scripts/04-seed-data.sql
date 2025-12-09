@@ -1,0 +1,31 @@
+-- Insert sample admin user (you'll need to create this via Supabase Auth first, then update is_admin)
+-- For now, just create sample properties after you've created an admin user
+
+-- Example: After creating user with auth, run this:
+-- INSERT INTO public.properties (
+--   admin_id, 
+--   title, 
+--   description, 
+--   location, 
+--   district,
+--   property_type,
+--   price,
+--   size_sqm,
+--   bedrooms,
+--   bathrooms,
+--   featured_image_url,
+--   listing_status
+-- ) VALUES (
+--   '00000000-0000-0000-0000-000000000000', -- Replace with actual admin user ID
+--   'Modern Luxury Home',
+--   'Beautiful modern house with pool',
+--   'Jakarta Selatan',
+--   'Kebayoran Baru',
+--   'residential',
+--   5000000000,
+--   350,
+--   4,
+--   3,
+--   'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800',
+--   'available'
+-- );
