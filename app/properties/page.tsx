@@ -4,7 +4,7 @@ import Navigation from "@/components/navigation"
 import Footer from "@/components/footer"
 import { ChevronRight, MapPin } from "lucide-react"
 import Link from "next/link"
-import { useEffect, useState } from "react"
+import {Suspense, useEffect, useState } from "react"
 import { useSearchParams } from "next/navigation"
 
 interface Property {
@@ -46,7 +46,7 @@ const fallbackProperties = [
   },
 ]
 
-export default function PropertiesPage() {
+function PropertiesPage() {
   const searchParams = useSearchParams()
   const query = searchParams.get("q") || ""
   const [properties, setProperties] = useState<Property[]>([])
@@ -219,5 +219,14 @@ export default function PropertiesPage() {
 
       <Footer />
     </main>
+  )
+}
+
+
+export default function Page() {
+  return (
+    <Suspense fallback={<div className="text-center py-12">Loading...</div>}>
+      <PropertiesPage />
+    </Suspense>
   )
 }

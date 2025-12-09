@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useMemo, useEffect } from "react"
+import { useState, useMemo, useEffect, Suspense } from "react"
 import Navigation from "@/components/navigation"
 import Footer from "@/components/footer"
 import { ChevronRight, MapPin } from "lucide-react"
@@ -36,7 +36,7 @@ const fallbackProperties: Property[] = [
 const districts = ["Darmo", "Dinoyo", "Jambangan", "Tegalsari", "Genteng", "Bulak", "Gubeng"]
 const propertyTypes = ["Rumah", "Apartemen", "Ruko"]
 
-export default function SearchPage() {
+function SearchPropertyPage() {
   const searchParams = useSearchParams()
   const query = searchParams.get("q")?.toLowerCase().trim() ?? ""
 
@@ -310,5 +310,13 @@ export default function SearchPage() {
 
       <Footer />
     </main>
+  )
+}
+
+export default function Page() {
+  return (
+    <Suspense fallback={<div className="text-center py-12">Loading...</div>}>
+      <SearchPropertyPage />
+    </Suspense>
   )
 }
